@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.4 <4.0.0'
+  sdk: '>=3.2.4 <5.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,15 +36,20 @@ dependencies:
   nb_utils: ^6.1.0
   dots_indicator: ^2.0.0
   flutter_svg: 2.0.10+1
-  url_launcher: ^6.0.12
-  cached_network_image: ^3.1.0
+  url_launcher: ^6.3.2
+  shared_preferences: ^2.5.5
+  fluttertoast: ^8.2.5
+  cached_network_image: ^3.4.1
+  collection: ^1.17.0
   flutter_staggered_grid_view: ^0.4.1
-  html: ^0.15.0
+  html: ^0.15.6
   intl: ^0.17.0
   cupertino_icons: ^1.0.2
   connectivity_plus_web: ^1.2.5
   path_provider_windows: ^2.2.1
   shared_preferences_windows: ^2.3.2
+  just_audio: ^0.9.36
+
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +77,7 @@ flutter:
   assets:
     - images/quiz/
     - images/quiz/quiz_logo.jpg
+    - assets/sounds/piano/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

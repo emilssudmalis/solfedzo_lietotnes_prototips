@@ -6,6 +6,8 @@ import 'package:quiz/utils/quiz_colors.dart';
 import 'package:quiz/utils/quiz_strings.dart';
 
 class QuizSettings extends StatefulWidget {
+  const QuizSettings({super.key});
+
   static String tag = '/QuizSetting';
 
   @override
@@ -190,7 +192,7 @@ Widget quizSettingOptionPattern2(var icon, var heading) {
             //  });
           },
           activeTrackColor: quizcolorPrimary,
-          activeColor: quizviewcolor,
+          activeThumbColor: quizviewcolor,
         )
       ],
     ),

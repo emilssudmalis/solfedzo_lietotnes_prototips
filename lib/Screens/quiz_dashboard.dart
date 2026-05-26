@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quiz/Screens/quiz_all_list.dart';
+
 import 'package:quiz/Screens/quiz_home.dart';
 import 'package:quiz/Screens/quiz_profile.dart';
 import 'package:quiz/utils/app_widget.dart';
@@ -21,7 +21,6 @@ class _QuizDashboardState extends State<QuizDashboard> {
 
   var pages = [
    const QuizHome(),
-    const QuizAllList(),
    const QuizProfile(),
   ];
 
@@ -35,8 +34,7 @@ class _QuizDashboardState extends State<QuizDashboard> {
     setState(() {
       selectedIndex = index;
       if (selectedIndex == 0) {
-      } else if (selectedIndex == 1) {
-      } else if (selectedIndex == 2) {}
+      } else if (selectedIndex == 1) {}
     });
   }
 
@@ -56,7 +54,10 @@ class _QuizDashboardState extends State<QuizDashboard> {
               icon,
               width: 20,
               height: 20,
-              color: selectedIndex == pos ? quizcolorPrimary : quiziconcolor,
+              colorFilter: ColorFilter.mode(
+                selectedIndex == pos ? quizcolorPrimary : quiziconcolor,
+                BlendMode.srcIn,
+              ),
             ),
             text(
               title,
@@ -97,9 +98,8 @@ class _QuizDashboardState extends State<QuizDashboard> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              quizItem(0, quizichomes, "Home"),
-              quizItem(1, quizicquiz, "Quiz"),
-              quizItem(2, quizicuser, "Profile"),
+              quizItem(0, quizichomes, "Tēmas"),
+              quizItem(1, quizicuser, "Profils"),
             ],
           ),
         ),

@@ -44,6 +44,8 @@ class GetStartBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
+        final navigator = Navigator.of(context);
+
         // Get the SharedPreferences instance
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -51,9 +53,8 @@ class GetStartBtn extends StatelessWidget {
         await prefs.setBool('onboarding_complete', true);
 
         // Navigate to the home page
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => QuizSignIn()),
+        navigator.pushReplacement(
+          MaterialPageRoute(builder: (context) => const QuizSignIn()),
         );
       },
       child: Container(
@@ -63,7 +64,7 @@ class GetStartBtn extends StatelessWidget {
         decoration: BoxDecoration(
             color: MyColors.btnColor, borderRadius: BorderRadius.circular(15)),
         child: Center(
-          child: Text("Get Started now", style: textTheme.headline4),
+          child: Text("Get Started now", style: textTheme.headlineLarge),
         ),
       ),
     );
@@ -100,7 +101,7 @@ class SkipBtn extends StatelessWidget {
         onTap: onTap,
         splashColor: MyColors.btnBorderColor,
         child: Center(
-          child: Text("Skip", style: textTheme.headline3),
+          child: Text("Skip", style: textTheme.headlineSmall),
         ),
       ),
     );

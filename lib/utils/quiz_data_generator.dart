@@ -1,46 +1,116 @@
 import 'package:quiz/model/quiz_models.dart';
 import 'package:quiz/utils/quiz_images.dart';
 
-List<NewQuizModel> getQuizData() {
-  List<NewQuizModel> list = [];
-  NewQuizModel model1 = NewQuizModel();
-  model1.quizName = "Biology & The \nScientific Method";
-  model1.totalQuiz = "15 Quiz";
-  model1.quizImage = quizicstudy1;
+import 'package:quiz/model/quiz_models.dart';
+import 'package:quiz/utils/quiz_images.dart';
 
-  NewQuizModel model2 = NewQuizModel();
-  model2.quizName = "Geography Basics \nMethods";
-  model2.totalQuiz = "5 Quiz";
-  model2.quizImage = quizicstudy2;
+// Tercas fun facts
+final tercaFacts = [
+  'Vienas nots izmaiņa tercā var pārvērst dziesmas noskaņu no priecīgas uz skumju!',
+  'Ja nevari atcerēties, kā izklausā maza terca, iedomājies dzeguzes kūkošanu!',
+  'L. van Bēthovena slavenā 5. simfonija sākas ar lejupejošu lielas tercas gājienu: Sol-Sol-Sol-Mib!',
+];
 
-  NewQuizModel model3 = NewQuizModel();
-  model3.quizName = "Java Basics \nOOPs Concept";
-  model3.totalQuiz = "10 Quiz";
-  model3.quizImage = quiziccourse3;
+String getRandomTercaFact() {
+  final facts = tercaFacts;
+  return facts[DateTime.now().microsecond % facts.length];
+}
 
-  NewQuizModel model4 = NewQuizModel();
-  model4.quizName = "Art and \nPainting Basic";
-  model4.totalQuiz = "10 Quiz";
-  model4.quizImage = quiziccourse1;
+List<Topic> getTopics() {
+  List<Topic> topics = [];
+  Topic topic1 = Topic(
+    id: 'intervals_tercas',
+    name: 'Tercas',
+    description: 'Apgūsim lielas un mazas tercas!',
+    image: tercaBilde,
+    fact: 'Terces ir pamats harmonijai mūzikā.',
+    facts: tercaFacts,
+    goal: 'Pareizi identificēt lielo un mazo tercu intervālus.',
+    theoryText:
+        '''KAS IR TERCA?
 
-  NewQuizModel model5 = NewQuizModel();
-  model5.quizName = "Communication Basic";
-  model5.totalQuiz = "10 Quiz";
-  model5.quizImage = quiziccommunication;
+Terca (no latīņu  valodas "tertius" - "trešais") ir intervāls, kura virsotne attiecībā pret pamatni ir trešā pakāpe.
 
-  NewQuizModel model6 = NewQuizModel();
-  model6.quizName = "Investment and \nTypes";
-  model6.totalQuiz = "10 Quiz";
-  model6.quizImage = quiziccourse2;
+To apzīmē ar ciparu "3".
 
-  list.add(model1);
-  list.add(model3);
-  list.add(model6);
-  list.add(model4);
-  list.add(model5);
-  list.add(model2);
+TERCU VEIDI
 
-  return list;
+1. LIELA TERCA (l3)
+   • Attālums: 2 veseli toņi jeb 4 pustoņi (trīs klavieru taustiņi starpā)
+   • Skaņa: Gaiša, priecīga
+   • Piemēri:
+     - Do - Mi
+     - Re - Fa#
+     - Mi - Sol#
+[IMAGE_HERE]
+2. MAZA TERCA (m3)
+   • Attālums: pusotrs tonis jeb 3 pustoņi (divi klavieru taustiņi starpā)
+   • Skaņa: Bēdīga, maiga
+   • Piemēri:
+     - Do - Mib
+     - Re - Fa
+     - Mi - Sol
+
+TERCU STRUKTŪRA
+
+Tercas pamatne = apakšējā nots
+Tercas virsotne = trešā pakāpe attiecībā pret pamatni
+
+Piemērs: Do-Mi tercu pārī
+- Do = pamatne (1. pakāpe)
+- Mi = virsotne (3. pakāpe)
+
+TERCU NOZĪME MŪZIKĀ
+
+- Liela terca + maza terca = Mažora trijskanis
+- Maza terca + liela terca = Minora trijskanis
+
+''',
+    theoryImages: ['images/quiz/terca.png'],
+    categories: ['intervals'],
+  );
+  Topic topic2 = Topic(
+    id: 'intervals_kvartas',
+    name: 'Kvartas',
+    description: 'Apgūsim tīras un palielinātas kvartas!',
+    image: kvartaBilde,
+    fact: 'Drīzumā būs pieejama pilna informācija.',
+    goal: 'Tēma vēl tiek izstrādāta.',
+    theoryText:
+        'Šis ir teorijas piemērs\n\nŠī tēma vēl tiek izstrādāta. Drīzumā šeit būs pilna informācija par kvartām.\n\nLūdzu, atgriezieties vēlāk!',
+    theoryImages: [],
+    categories: ['intervals'],
+  );
+  Topic topic3 = Topic(
+    id: 'intervals_kvintas',
+    name: 'Kvintas',
+    description: 'Apgūsim tīras un pamazinātas kvintas!',
+    image: kvintaBilde,
+    fact:
+        'Drīzumā būs pieejama pilna informācija.',
+    goal: 'Tēma vēl tiek izstrādāta.',
+    theoryText:
+        'Šis ir teorijas piemērs\n\nŠī tēma vēl tiek izstrādāta. Drīzumā šeit būs pilna informācija par kvintām.\n\nLūdzu, atgriezieties vēlāk!',
+    theoryImages: [],
+    categories: ['intervals'],
+  );
+  Topic topic4 = Topic(
+    id: 'intervals_sekstas',
+    name: 'Sekstas',
+    description: 'Apgūsim lielas un mazas sekstas!',
+    image: sekstaBilde,
+    fact: 'Drīzumā būs pieejama pilna informācija.',
+    goal: 'Tēma vēl tiek izstrādāta.',
+    theoryText:
+        'Šis ir teorijas piemērs\n\nŠī tēma vēl tiek izstrādāta. Drīzumā šeit būs pilna informācija par sekstām.\n\nLūdzu, atgriezieties vēlāk!',
+    theoryImages: [],
+    categories: ['intervals'],
+  );
+  topics.add(topic1);
+  topics.add(topic2);
+  topics.add(topic3);
+  topics.add(topic4);
+  return topics;
 }
 
 List<QuizTestModel> quizGetData() {
@@ -112,20 +182,20 @@ List<QuizBadgesModel> quizBadgesData() {
 List<QuizScoresModel> quizScoresData() {
   List<QuizScoresModel> list = [];
   QuizScoresModel model1 = QuizScoresModel();
-  model1.title = "Biology Basics";
-  model1.totalQuiz = "20 Quiz";
+  model1.title = "Tēma: tercas";
+  model1.shortDescription = "20 Quiz";
   model1.img = quiziccourse1;
   model1.scores = "30/50";
 
   QuizScoresModel model2 = QuizScoresModel();
   model2.title = "Java Basics";
-  model2.totalQuiz = "30 Quiz";
+  model2.shortDescription = "30 Quiz";
   model2.img = quiziccourse2;
   model2.scores = "30/50";
 
   QuizScoresModel model3 = QuizScoresModel();
   model3.title = "Art & Painting Basics";
-  model3.totalQuiz = "10 Quiz";
+  model3.shortDescription = "10 Quiz";
   model3.img = quiziccourse3;
   model3.scores = "10/50";
 

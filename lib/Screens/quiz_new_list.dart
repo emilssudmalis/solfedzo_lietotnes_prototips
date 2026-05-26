@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -21,7 +20,7 @@ class QuizListing extends StatefulWidget {
 }
 
 class _QuizListingState extends State<QuizListing> {
-  late List<NewQuizModel> mListings;
+  late List<Topic> mListings;
 
   var selectedGrid = true;
   var selectedList = false;
@@ -29,7 +28,7 @@ class _QuizListingState extends State<QuizListing> {
   @override
   void initState() {
     super.initState();
-    mListings = getQuizData();
+    mListings = getTopics();
   }
 
   @override
@@ -58,12 +57,11 @@ class _QuizListingState extends State<QuizListing> {
                         topLeft: Radius.circular(16.0),
                         topRight: Radius.circular(16.0)
                     ),
-                    child: CachedNetworkImage(
-                        placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
-                        imageUrl: mListings[index].quizImage,
-                        height: w * 0.4,
-                        width: MediaQuery.of(context).size.width / 0.25,
-                        fit: BoxFit.cover
+                    child: commonCacheImageWidget(
+                      mListings[index].image,
+                      height: w * 0.4,
+                      width: MediaQuery.of(context).size.width / 0.25,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
@@ -73,9 +71,9 @@ class _QuizListingState extends State<QuizListing> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    text(mListings[index].quizName, fontSize: textSizeMedium, isLongText: true, fontFamily: fontMedium),
+                    text(mListings[index].name, fontSize: textSizeMedium, isLongText: true, fontFamily: fontMedium),
                     const SizedBox(height: 8),
-                    text(mListings[index].totalQuiz, textColor: quiztextColorSecondary),
+                    text(mListings[index].description, textColor: quiztextColorSecondary),
                   ],
                 ),
               ),
@@ -108,9 +106,8 @@ class _QuizListingState extends State<QuizListing> {
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0)
                 ),
-                child: CachedNetworkImage(
-                  placeholder: placeholderWidgetFn() as Widget Function(BuildContext, String)?,
-                  imageUrl: mListings[index].quizImage,
+                child: commonCacheImageWidget(
+                  mListings[index].image,
                   height: w * 0.4,
                   width: MediaQuery.of(context).size.width / 0.25,
                   fit: BoxFit.cover,
@@ -127,8 +124,8 @@ class _QuizListingState extends State<QuizListing> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    text(mListings[index].quizName, fontSize: textSizeMedium, maxLine: 2, fontFamily: fontMedium).paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
-                    text(mListings[index].totalQuiz, textColor: quiztextColorSecondary).paddingOnly(left: 16, right: 16, bottom: 16),
+                    text(mListings[index].name, fontSize: textSizeMedium, maxLine: 2, fontFamily: fontMedium).paddingOnly(top: 8, left: 16, right: 16, bottom: 8),
+                    text(mListings[index].description, textColor: quiztextColorSecondary).paddingOnly(left: 16, right: 16, bottom: 16),
                   ],
                 ),
               ),

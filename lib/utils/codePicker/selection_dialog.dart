@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz/utils/app_widget.dart';
 
-import '../../../main.dart';
 import 'country_code.dart';
 
 /// selection dialog used for selection of the country code

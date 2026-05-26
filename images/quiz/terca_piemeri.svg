@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="500" y="30" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial">TERCU PIEMĒRI DAŽĀDĀS TONALITĀTĒS</text>
+  
+  <!-- Example 1: C-E (Major Third) -->
+  <text x="150" y="70" font-size="16" font-weight="bold" font-family="Arial">Liela terca (4 pustoņi)</text>
+  <text x="80" y="110" font-size="18" font-family="Arial" font-weight="bold">Do - Mi</text>
+  <rect x="50" y="130" width="200" height="120" stroke="black" stroke-width="2" fill="white"/>
+  <line x1="50" y1="150" x2="250" y2="150" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="165" x2="250" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="180" x2="250" y2="180" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="195" x2="250" y2="195" stroke="black" stroke-width="2"/>
+  <line x1="50" y1="210" x2="250" y2="210" stroke="black" stroke-width="2"/>
+  <!-- Treble clef -->
+  <text x="70" y="190" font-size="40" font-family="serif">𝄞</text>
+  <!-- Notes -->
+  <circle cx="130" cy="180" r="6" fill="black"/>
+  <circle cx="180" cy="150" r="6" fill="black"/>
+  <text x="130" y="245" font-size="14" text-anchor="middle" font-family="Arial">Do</text>
+  <text x="180" y="245" font-size="14" text-anchor="middle" font-family="Arial">Mi</text>
+  
+  <!-- Example 2: D-F# (Major Third) -->
+  <text x="420" y="110" font-size="18" font-family="Arial" font-weight="bold">Re - Fa#</text>
+  <rect x="370" y="130" width="200" height="120" stroke="black" stroke-width="2" fill="white"/>
+  <line x1="370" y1="150" x2="570" y2="150" stroke="black" stroke-width="2"/>
+  <line x1="370" y1="165" x2="570" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="370" y1="180" x2="570" y2="180" stroke="black" stroke-width="2"/>
+  <line x1="370" y1="195" x2="570" y2="195" stroke="black" stroke-width="2"/>
+  <line x1="370" y1="210" x2="570" y2="210" stroke="black" stroke-width="2"/>
+  <!-- Treble clef -->
+  <text x="390" y="190" font-size="40" font-family="serif">𝄞</text>
+  <!-- Notes -->
+  <circle cx="450" cy="165" r="6" fill="black"/>
+  <circle cx="500" cy="150" r="6" fill="black"/>
+  <text x="450" y="245" font-size="14" text-anchor="middle" font-family="Arial">Re</text>
+  <text x="500" y="245" font-size="14" text-anchor="middle" font-family="Arial">Fa#</text>
+  
+  <!-- Example 3: C-Eb (Minor Third) -->
+  <text x="770" y="70" font-size="16" font-weight="bold" font-family="Arial">Mazā terca (3 pustoņi)</text>
+  <text x="740" y="110" font-size="18" font-family="Arial" font-weight="bold">Do - Mib</text>
+  <rect x="700" y="130" width="200" height="120" stroke="black" stroke-width="2" fill="white"/>
+  <line x1="700" y1="150" x2="900" y2="150" stroke="black" stroke-width="2"/>
+  <line x1="700" y1="165" x2="900" y2="165" stroke="black" stroke-width="2"/>
+  <line x1="700" y1="180" x2="900" y2="180" stroke="black" stroke-width="2"/>
+  <line x1="700" y1="195" x2="900" y2="195" stroke="black" stroke-width="2"/>
+  <line x1="700" y1="210" x2="900" y2="210" stroke="black" stroke-width="2"/>
+  <!-- Treble clef -->
+  <text x="720" y="190" font-size="40" font-family="serif">𝄞</text>
+  <!-- Notes -->
+  <circle cx="780" cy="180" r="6" fill="black"/>
+  <text x="760" y="155" font-size="14" font-weight="bold" font-family="Arial">♭</text>
+  <circle cx="830" cy="165" r="6" fill="black"/>
+  <text x="780" y="245" font-size="14" text-anchor="middle" font-family="Arial">Do</text>
+  <text x="830" y="245" font-size="14" text-anchor="middle" font-family="Arial">Mib</text>
+</svg>

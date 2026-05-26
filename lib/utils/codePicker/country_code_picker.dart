@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz/utils/app_widget.dart';
 import 'package:quiz/utils/codePicker/selection_dialog.dart';
-import '../../../main.dart';
 import 'country_code.dart';
 import 'country_codes.dart';
 
@@ -60,24 +59,7 @@ class CountryCodePicker extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() {
-    List<Map> jsonList = codes;
-
-    List<CountryCode> elements = jsonList
-        .map((s) => CountryCode(
-              name: s['name'],
-              code: s['code'],
-              dialCode: s['dial_code'],
-              flagUri: '', // add icon urls here
-            ))
-        .toList();
-
-    if (countryFilter.isNotEmpty) {
-      elements = elements.where((c) => countryFilter.contains(c.code)).toList();
-    }
-
-    return _CountryCodePickerState(elements);
-  }
+  State<CountryCodePicker> createState() => _CountryCodePickerState();
 }
 
 class _CountryCodePickerState extends State<CountryCodePicker> {
@@ -85,18 +67,16 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   List<CountryCode> elements = [];
   List<CountryCode> favoriteElements = [];
 
-  _CountryCodePickerState(this.elements);
-
   @override
   Widget build(BuildContext context) {
-    Widget _widget;
+    Widget widgetChild;
     if (widget.builder != null) {
-      _widget = InkWell(
+      widgetChild = InkWell(
         onTap: _showSelectionDialog,
         child: widget.builder!(selectedItem),
       );
     } else {
-      _widget = TextButton(
+      widgetChild = TextButton(
         style: TextButton.styleFrom(
           padding: widget.padding,
         ),
@@ -126,7 +106,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         ),
       );
     }
-    return _widget;
+    return widgetChild;
   }
 
   @override
@@ -142,9 +122,28 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
   }
 
   @override
-  initState() {
+  void initState() {
+    super.initState();
+    List<Map> jsonList = codes;
+
+    elements = jsonList
+        .map((s) => CountryCode(
+              name: s['name'],
+              code: s['code'],
+              dialCode: s['dial_code'],
+              flagUri: '', // add icon urls here
+            ))
+        .toList();
+
+    if (widget.countryFilter.isNotEmpty) {
+      elements = elements.where((c) => widget.countryFilter.contains(c.code)).toList();
+    }
+
     if (widget.initialSelection != null) {
-      selectedItem = elements.firstWhere((e) => (e.code!.toUpperCase() == widget.initialSelection!.toUpperCase()) || (e.dialCode == widget.initialSelection.toString()), orElse: () => elements[0]);
+      selectedItem = elements.firstWhere(
+        (e) => (e.code!.toUpperCase() == widget.initialSelection!.toUpperCase()) || (e.dialCode == widget.initialSelection.toString()),
+        orElse: () => elements[0],
+      );
     } else {
       selectedItem = elements[0];
     }
@@ -152,8 +151,9 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
     //Change added: get the initial entered country information
     _onInit(selectedItem);
 
-    favoriteElements = elements.where((e) => widget.favorite.firstWhereOrNull((f) => e.code == f.toUpperCase() || e.dialCode == f.toString()) != null).toList();
-    super.initState();
+    favoriteElements = elements
+        .where((e) => widget.favorite.firstWhereOrNull((f) => e.code == f.toUpperCase() || e.dialCode == f.toString()) != null)
+        .toList();
   }
 
   void _showSelectionDialog() {

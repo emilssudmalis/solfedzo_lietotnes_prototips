@@ -5,7 +5,7 @@ enum LinearStrokeCap { butt, round, roundAll }
 // ignore: must_be_immutable
 class LinearPercentIndicator extends StatefulWidget {
   ///Percent value between 0.0 and 1.0
-  final double? percent;
+  final double percent;
   final double? width;
 
   ///Height of the line
@@ -103,7 +103,7 @@ class LinearPercentIndicator extends StatefulWidget {
     }
     _progressColor = progressColor ?? Colors.red;
 
-    if (percent! < 0.0 || percent! > 1.0) {
+    if (percent < 0.0 || percent > 1.0) {
       throw  Exception("Percent value must be a double between 0.0 and 1.0");
     }
   }
@@ -114,8 +114,8 @@ class LinearPercentIndicator extends StatefulWidget {
 
 class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   AnimationController? _animationController;
-  late Animation _animation;
-  double? _percent = 0.0;
+  late Animation<double> _animation;
+  double _percent = 0.0;
 
   @override
   void dispose() {
@@ -185,7 +185,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with Si
           isRTL: widget.isRTL,
           progress: _percent,
           center: widget.center,
-          progressColor: widget.progressColor,
+          progressColor: widget.progressColor ?? Colors.red,
           linearGradient: widget.linearGradient,
           backgroundColor: widget.backgroundColor,
           linearStrokeCap: widget.linearStrokeCap,
@@ -228,34 +228,34 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator> with Si
 class LinearPainter extends CustomPainter {
   final Paint _paintBackground = Paint();
   final Paint _paintLine = Paint();
-  final lineWidth;
-  final progress;
-  final center;
-  final isRTL;
-  final Color? progressColor;
-  final Color? backgroundColor;
+  final double lineWidth;
+  final double progress;
+  final Widget? center;
+  final bool isRTL;
+  final Color progressColor;
+  final Color backgroundColor;
   final LinearStrokeCap? linearStrokeCap;
   final LinearGradient? linearGradient;
   final MaskFilter? maskFilter;
   final bool? clipLinearGradient;
 
   LinearPainter({
-    this.lineWidth,
-    this.progress,
+    required this.lineWidth,
+    required this.progress,
     this.center,
-    this.isRTL,
-    this.progressColor,
-    this.backgroundColor,
+    this.isRTL = false,
+    required this.progressColor,
+    required this.backgroundColor,
     this.linearStrokeCap = LinearStrokeCap.butt,
     this.linearGradient,
     this.maskFilter,
     this.clipLinearGradient,
   }) {
-    _paintBackground.color = backgroundColor!;
+    _paintBackground.color = backgroundColor;
     _paintBackground.style = PaintingStyle.stroke;
     _paintBackground.strokeWidth = lineWidth;
 
-    _paintLine.color = progress.toString() == "0.0" ? progressColor!.withOpacity(0.0) : progressColor!;
+    _paintLine.color = progress.toString() == "0.0" ? progressColor.withAlpha(0) : progressColor;
     _paintLine.style = PaintingStyle.stroke;
     _paintLine.strokeWidth = lineWidth;
 

@@ -51,7 +51,7 @@ class quizButtonState extends State<quizButton> {
     return GestureDetector(
       onTap: widget.onPressed,
       child: Container(
-          decoration: boxDecoration(bgColor: quizcolorPrimary, radius: 16),
+          decoration: boxDecoration(bgColor: quizcolorSecondary, radius: 16),
           padding:const EdgeInsets.fromLTRB(16, 10, 16, 10),
           child: Stack(
             alignment: Alignment.center,
@@ -62,7 +62,7 @@ class quizButtonState extends State<quizButton> {
               Align(
                 alignment: Alignment.topRight,
                 child: Container(
-                  decoration:const BoxDecoration(shape: BoxShape.circle, color: quizcolorPrimaryDark),
+                  decoration:const BoxDecoration(shape: BoxShape.circle, color: quizcolorAccent),
                   width: 35,
                   height: 35,
                   child:const Padding(
@@ -268,5 +268,5 @@ class PinEntryTextFieldState extends State<PinEntryTextField> {
 }
 
 showToast(String caption) {
-  Fluttertoast.showToast(msg: caption, toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM, backgroundColor: getColorFromHex("5362FB"), textColor: quizwhite, fontSize: 16.0);
+  Fluttertoast.showToast(msg: caption, toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM, backgroundColor: quizcolorPrimary, textColor: quizwhite, fontSize: 16.0);
 }

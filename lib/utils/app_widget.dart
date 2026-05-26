@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:quiz/utils/quiz_colors.dart';
 
 Widget text(
   String? text, {
@@ -18,7 +19,7 @@ Widget text(
   return Text(
     textAllCaps ? text!.toUpperCase() : text!,
     textAlign: isCentered ? TextAlign.center : TextAlign.start,
-    maxLines: isLongText ? null : maxLine,
+    maxLines: 3,
     overflow: TextOverflow.ellipsis,
     style: TextStyle(
       fontFamily: fontFamily,
@@ -72,8 +73,59 @@ class CustomTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: quizcolorPrimary,
+      brightness: Brightness.light,
+      primary: quizcolorPrimary,
+      secondary: quizcolorSecondary,
+      surface: quizviewcolor,
+      onSurface: quiztextColorPrimary,
+      error: quizcolorred,
+      onError: Colors.white,
+    );
+
     return Theme(
-      data: ThemeData.light(),
+      data: ThemeData.from(colorScheme: colorScheme).copyWith(
+        scaffoldBackgroundColor: quizappbackground,
+        cardColor: quizviewcolor,
+        canvasColor: quizappbackground,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: quizcolorPrimary,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: quizcolorPrimary,
+            foregroundColor: Colors.white,
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: quizcolorPrimary,
+            side: const BorderSide(color: quizcolorPrimary),
+          ),
+        ),
+        textTheme: ThemeData.light().textTheme.apply(
+              bodyColor: quiztextColorPrimary,
+              displayColor: quiztextColorPrimary,
+            ),
+        iconTheme: const IconThemeData(color: quiztextColorPrimary),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: quizwhite,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: quizviewcolor),
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        cardTheme: CardThemeData(
+          color: quizwhite,
+          shadowColor: quizShadowColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+      ),
       child: child!,
     );
   }

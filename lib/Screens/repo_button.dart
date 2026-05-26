@@ -11,10 +11,11 @@ class RepoButton extends StatelessWidget {
     return AppButton(
       text: 'Check out the Repo',
       color: quizcolorPrimary,
-      textStyle: boldTextStyle(color: Colors.white),
+      textStyle: boldTextStyle(color: quizwhite),
       shapeBorder: RoundedRectangleBorder(borderRadius: radius(10)),
-      onTap: () {
-        launch("https://github.com/muhammad-fiaz/QuizApp-Flutter");
+      onTap: () async {
+        final uri = Uri.parse('https://github.com/muhammad-fiaz/QuizApp-Flutter');
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
       },
     );
   }

@@ -1,0 +1,92 @@
+<svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="600" y="30" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial">TERCAS KLAVIATURĀ</text>
+  
+  <!-- Section 1: Major Third (C-E) -->
+  <text x="150" y="70" font-size="18" font-weight="bold" font-family="Arial">Liela terca (Major Third): Do-Mi (4 pustoņi)</text>
+  
+  <!-- Piano keyboard for major third -->
+  <g id="piano1">
+    <!-- White keys -->
+    <rect x="50" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="90" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="130" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="170" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="210" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="250" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="290" y="100" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    
+    <!-- Black keys -->
+    <rect x="78" y="100" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="118" y="100" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="198" y="100" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="238" y="100" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="278" y="100" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    
+    <!-- Labels and highlighting -->
+    <text x="70" y="240" font-size="14" text-anchor="middle" font-family="Arial">C</text>
+    <text x="110" y="240" font-size="14" text-anchor="middle" font-family="Arial">D</text>
+    <text x="150" y="240" font-size="14" text-anchor="middle" font-family="Arial">E</text>
+    <text x="190" y="240" font-size="14" text-anchor="middle" font-family="Arial">F</text>
+    <text x="230" y="240" font-size="14" text-anchor="middle" font-family="Arial">G</text>
+    <text x="270" y="240" font-size="14" text-anchor="middle" font-family="Arial">A</text>
+    <text x="310" y="240" font-size="14" text-anchor="middle" font-family="Arial">B</text>
+    
+    <!-- Highlight Do and Mi -->
+    <circle cx="70" cy="160" r="12" fill="none" stroke="red" stroke-width="3"/>
+    <circle cx="150" cy="160" r="12" fill="none" stroke="red" stroke-width="3"/>
+    <text x="70" y="280" font-size="16" font-weight="bold" fill="red" text-anchor="middle" font-family="Arial">Do</text>
+    <text x="150" y="280" font-size="16" font-weight="bold" fill="red" text-anchor="middle" font-family="Arial">Mi</text>
+  </g>
+  
+  <!-- Section 2: Minor Third (C-Eb) -->
+  <text x="150" y="330" font-size="18" font-weight="bold" font-family="Arial">Mazā terca (Minor Third): Do-Mib (3 pustoņi)</text>
+  
+  <!-- Piano keyboard for minor third -->
+  <g id="piano2">
+    <!-- White keys -->
+    <rect x="50" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="90" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="130" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="170" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="210" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="250" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    <rect x="290" y="360" width="40" height="120" fill="white" stroke="black" stroke-width="2"/>
+    
+    <!-- Black keys -->
+    <rect x="78" y="360" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="118" y="360" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="198" y="360" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="238" y="360" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    <rect x="278" y="360" width="24" height="75" fill="black" stroke="black" stroke-width="1"/>
+    
+    <!-- Labels -->
+    <text x="70" y="500" font-size="14" text-anchor="middle" font-family="Arial">C</text>
+    <text x="110" y="500" font-size="14" text-anchor="middle" font-family="Arial">D</text>
+    <text x="150" y="500" font-size="14" text-anchor="middle" font-family="Arial">E</text>
+    <text x="190" y="500" font-size="14" text-anchor="middle" font-family="Arial">F</text>
+    <text x="230" y="500" font-size="14" text-anchor="middle" font-family="Arial">G</text>
+    <text x="270" y="500" font-size="14" text-anchor="middle" font-family="Arial">A</text>
+    <text x="310" y="500" font-size="14" text-anchor="middle" font-family="Arial">B</text>
+    
+    <!-- Highlight Do and Mib -->
+    <circle cx="70" cy="420" r="12" fill="none" stroke="blue" stroke-width="3"/>
+    <circle cx="118" cy="420" r="12" fill="none" stroke="blue" stroke-width="3"/>
+    <text x="70" y="540" font-size="16" font-weight="bold" fill="blue" text-anchor="middle" font-family="Arial">Do</text>
+    <text x="118" y="540" font-size="16" font-weight="bold" fill="blue" text-anchor="middle" font-family="Arial">Mib</text>
+  </g>
+  
+  <!-- Semitone distances -->
+  <text x="450" y="120" font-size="16" font-family="Arial">
+    <tspan x="450" dy="0">PUSTOŅU ATTĀLUMI:</tspan>
+    <tspan x="450" dy="25">Liela terca (Major): 4 pustoņi</tspan>
+    <tspan x="450" dy="25">Mazā terca (Minor): 3 pustoņi</tspan>
+  </text>
+  
+  <!-- Comparison -->
+  <text x="450" y="240" font-size="16" font-weight="bold" font-family="Arial">SALĪDZINĀJUMS:</text>
+  <text x="450" y="265" font-size="14" font-family="Arial">
+    <tspan x="450" dy="0">Liela terca: Skaista, atvērtā, priecīga skaņa</tspan>
+    <tspan x="450" dy="20">Mazā terca: Mīksta, klusa, skumja skaņa</tspan>
+  </text>
+</svg>

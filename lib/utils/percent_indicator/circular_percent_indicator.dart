@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 enum CircularStrokeCap { butt, round, square }
 
 enum ArcType {
-  HALF,
-  FULL,
+  half,
+  full,
 }
 
 // ignore: must_be_immutable
@@ -324,7 +324,7 @@ class CirclePainter extends CustomPainter {
 
     double startAngleFixedMargin = 1.0;
     if (arcType != null) {
-      if (arcType == ArcType.FULL) {
+      if (arcType == ArcType.full) {
         fixedStartAngle = 220;
         startAngleFixedMargin = 172 / fixedStartAngle;
       } else {

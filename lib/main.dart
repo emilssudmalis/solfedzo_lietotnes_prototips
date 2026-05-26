@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:quiz/Screens/quiz_splash_screen.dart';
+import 'package:quiz/Screens/quiz_sign_in.dart';
+import 'package:quiz/utils/quiz_colors.dart';
 /*
 MIT License
 
@@ -36,9 +37,46 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: quizcolorPrimary,
+      brightness: Brightness.light,
+      primary: quizcolorPrimary,
+      secondary: quizcolorSecondary,
+      surface: quizviewcolor,
+      onSurface: quiztextColorPrimary,
+      error: quizcolorred,
+      onError: Colors.white,
+    );
+
     return MaterialApp(
-      title: 'Quiz App',
-      home:const QuizSplashScreen(),
+      title: 'Solfedžo prototips',
+      theme: ThemeData.from(colorScheme: colorScheme).copyWith(
+        scaffoldBackgroundColor: quizappbackground,
+        cardColor: quizviewcolor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: quizcolorPrimary,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: quizcolorPrimary,
+            foregroundColor: Colors.white,
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: quizcolorPrimary,
+            side: const BorderSide(color: quizcolorPrimary),
+          ),
+        ),
+        textTheme: ThemeData.light().textTheme.apply(
+              bodyColor: quiztextColorPrimary,
+              displayColor: quiztextColorPrimary,
+            ),
+      ),
+      home: const QuizSignIn(),
       debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
     );

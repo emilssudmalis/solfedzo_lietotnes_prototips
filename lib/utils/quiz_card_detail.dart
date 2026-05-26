@@ -2,29 +2,22 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class QuizCardDetails extends StatefulWidget {
-  int index;
-  String imageAddress;
-  String? placeDetails;
+  final int index;
+  final String imageAddress;
 
-  QuizCardDetails(this.imageAddress, this.index, {super.key});
+  const QuizCardDetails(this.imageAddress, this.index, {super.key});
 
   @override
-  State<StatefulWidget> createState() => QuizCardDetailsState(imageAddress, index);
+  State<QuizCardDetails> createState() => QuizCardDetailsState();
 }
 
 class QuizCardDetailsState extends State<QuizCardDetails> {
-  int index;
-  String imageAddress;
   late String placeDetails;
-
-  QuizCardDetailsState(this.imageAddress, this.index);
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      getData(index);
-    });
+    getData(widget.index);
   }
 
   getData(value) {
@@ -77,7 +70,7 @@ class QuizCardDetailsState extends State<QuizCardDetails> {
                       bottomRight: Radius.circular(20.0),
                     ),
                     image: DecorationImage(
-                      image: NetworkImage(imageAddress),
+                      image: NetworkImage(widget.imageAddress),
                       fit: BoxFit.fill,
                     )),
               ),

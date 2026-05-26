@@ -1,6 +1,6 @@
 mixin ToAlias {}
 
-@deprecated
+@Deprecated('Use CountryCode instead')
 class CElement = CountryCode with ToAlias;
 
 /// Country element. This is the element that contains all the information

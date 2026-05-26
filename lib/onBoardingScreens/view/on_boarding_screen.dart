@@ -7,14 +7,14 @@ import '../model/items_model.dart';
 import '../utils/colors.dart';
 
 // OnBoardingScreens Controller
-class onBoardingScreenHome extends StatefulWidget {
-  const onBoardingScreenHome({Key? key}) : super(key: key);
+class OnBoardingScreenHome extends StatefulWidget {
+  const OnBoardingScreenHome({Key? key}) : super(key: key);
 
   @override
-  State<onBoardingScreenHome> createState() => _HomePageState();
+  State<OnBoardingScreenHome> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<onBoardingScreenHome> {
+class _HomePageState extends State<OnBoardingScreenHome> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
@@ -92,7 +92,7 @@ class _HomePageState extends State<onBoardingScreenHome> {
                               Text(
                                 listOfItems[index].title,
                                 textAlign: TextAlign.center,
-                                style: textTheme.headline1?.copyWith(
+                                style: textTheme.displayLarge?.copyWith(
                                     fontSize: 24, fontWeight: FontWeight.bold)
                               ),
                             )),
@@ -104,7 +104,7 @@ class _HomePageState extends State<onBoardingScreenHome> {
                           Text(
                             listOfItems[index].subTitle,
                             textAlign: TextAlign.center,
-                            style: textTheme.headline2?.copyWith(fontSize: 16),
+                            style: textTheme.displayMedium?.copyWith(fontSize: 16),
                           ),
                         ),
                       ],

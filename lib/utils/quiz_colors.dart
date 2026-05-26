@@ -1,61 +1,62 @@
 import 'package:flutter/material.dart';
 
-const t8colorPrimary = Color(0xFF5362FB);
-const t8colorPrimaryDark = Color(0xFF3D50FC);
-const t8colorAccent = Color(0xFF22D8CD);
+const Color t8colorPrimary = Color(0xFF2196F3);
+const Color t8colorPrimaryDark = Color(0xFF1976D2);
+const Color t8colorAccent = Color(0xFFFF9800);
 
-const t8colorred = Color(0xFFF12727);
-const t8textColorPrimary = Color(0xFF333333);
-const t8textColorSecondary = Color(0xFF918F8F);
+const Color t8colorred = Color(0xFFF12727);
+const Color t8textColorPrimary = Color(0xFF333333);
+const Color t8textColorSecondary = Color(0xFF616161);
 
-const t8appbackground = Color(0xFFf3f5f9);
-const t8viewcolor = Color(0xFFDADADA);
+const Color t8appbackground = Color(0xFFF5F5F5);
+const Color t8viewcolor = Color(0xFFE3F2FD);
 
-const t8white = Color(0xFFffffff);
+const Color t8white = Color(0xFFFFFFFF);
 
-const t8iconcolor = Color(0xFF747474);
-const t8colorgreen = Color(0xFF8BC34A);
-const t8editbackground = Color(0xFFF5F4F4);
-const t8lightgray = Color(0xFFCECACA);
-const t8colorsdots = Color(0xFF009688);
+const Color t8iconcolor = Color(0xFF747474);
+const Color t8colorgreen = Color(0xFF4CAF50);
+const Color t8editbackground = Color(0xFFF5F5F5);
+const Color t8lightgray = Color(0xFFBDBDBD);
+const Color t8colorsdots = Color(0xFF2196F3);
 
-const t8green = Color(0xFF00FF00);
-const t8red = Color(0xFFFF0000);
-const t8colorsetting = Color(0xFFACB5FD);
-const t8colormessage = Color(0xFF5362FB);
-const t8colormail = Color(0xFF62D3AB);
-const t8colorfacebook = Color(0xFF4872FB);
-const t8colortwitter = Color(0xFF2CB6F8);
-const t8colortransparent = Color(0xFF00FFFFFF);
-const t8ShadowColor = Color(0X95E9EBF0);
-const t8formgoogle = Color(0xFFF13B19);
+const Color t8green = Color(0xFF4CAF50);
+const Color t8red = Color(0xFFFF0000);
+const Color t8colorsetting = Color(0xFF90CAF9);
+const Color t8colormessage = Color(0xFF2196F3);
+const Color t8colormail = Color(0xFF4CAF50);
+const Color t8colorfacebook = Color(0xFF2196F3);
+const Color t8colortwitter = Color(0xFF2196F3);
+const Color t8colortransparent = Color(0x00FFFFFF);
+const Color t8ShadowColor = Color(0X95E9EBF0);
+const Color t8formgoogle = Color(0xFFF13B19);
 
-const quizcolorPrimary = Color(0xFF5362FB);
-const quizcolorPrimaryDark = Color(0xFF3D50FC);
-const quizcolorAccent = Color(0xFF22D8CD);
+const Color quizcolorPrimary = t8colorPrimary;
+const Color quizcolorPrimaryDark = t8colorPrimaryDark;
+const Color quizcolorSecondary = t8colorgreen;
+const Color quizcolorAccent = t8colorAccent;
 
-const quizcolorred = Color(0xFFF12727);
-const quiztextColorPrimary = Color(0xFF333333);
-const quiztextColorSecondary = Color(0xFF918F8F);
+const Color quizcolorred = t8colorred;
+const Color quiztextColorPrimary = t8textColorPrimary;
+const Color quiztextColorSecondary = t8textColorSecondary;
 
-const quizappbackground = Color(0xFFf3f5f9);
-const quizviewcolor = Color(0xFFDADADA);
+const Color quizappbackground = t8appbackground;
+const Color quizviewcolor = t8viewcolor;
 
-const quizwhite = Color(0xFFffffff);
+const Color quizwhite = t8white;
 
-const quiziconcolor = Color(0xFF747474);
-const quizcolorgreen = Color(0xFF8BC34A);
-const quizeditbackground = Color(0xFFF5F4F4);
-const quizlightgray = Color(0xFFCECACA);
-const quizcolorsdots = Color(0xFF009688);
+const Color quiziconcolor = t8iconcolor;
+const Color quizcolorgreen = t8colorgreen;
+const Color quizeditbackground = t8editbackground;
+const Color quizlightgray = t8lightgray;
+const Color quizcolorsdots = t8colorsdots;
 
-const quizgreen = Color(0xFF00FF00);
-const quizred = Color(0xFFFF0000);
-const quizcolorsetting = Color(0xFFACB5FD);
-const quizcolormessage = Color(0xFF5362FB);
-const quizcolormail = Color(0xFF62D3AB);
-const quizcolorfacebook = Color(0xFF4872FB);
-const quizcolortwitter = Color(0xFF2CB6F8);
-const quizcolortransparent = Color(0xFF00FFFFFF);
-const quizShadowColor = Color(0X95E9EBF0);
-const quizformgoogle = Color(0xFFF13B19);
+const Color quizgreen = t8green;
+const Color quizred = t8red;
+const Color quizcolorsetting = t8colorsetting;
+const Color quizcolormessage = t8colormessage;
+const Color quizcolormail = t8colormail;
+const Color quizcolorfacebook = t8colorfacebook;
+const Color quizcolortwitter = t8colortwitter;
+const Color quizcolortransparent = t8colortransparent;
+const Color quizShadowColor = t8ShadowColor;
+const Color quizformgoogle = t8formgoogle;
