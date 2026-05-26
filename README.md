@@ -14,7 +14,7 @@ Jāatgādina, ka projekts ir prototipa stadijā, tādēļ izstrādāta ir tikai 
 
 * Mācīties solfedžo teoriju;
 
-* Pildīt uzdevumus, kuru grūtības pakāpe automātiski pielāgojas, atkarībā no atbildēm
+* Pildīt uzdevumus, kuru grūtības pakāpe automātiski pielāgojas, atkarībā no atbildēm;
 
 * Iegūt balvas par pabeigtām tēmām.
 
@@ -57,19 +57,20 @@ flutter run -d chrome (ja vēlaties to palaist Chrome pārlūkā)
 **Galvenie _dependencies_:**
 
 animate_do
+
 smooth_page_indicator
+
 flutter_svg
+
 shared_preferences
+
 cached_network_image
+
 u.c.
 
 **Licence:**
 
 Šis projekts ir licencēts saskaņā ar MIT licenci.
-
-MIT License
-
-Copyright (c) 2024 Muhammad Fiaz
 
 MIT License
 
