@@ -44,7 +44,7 @@ class _PianoValidationWidgetState extends State<PianoValidationWidget> {
 
   @override
   void dispose() {
-    _soundService.dispose();
+    // Don't dispose the shared singleton service - it needs to persist for the lifetime of the app
     super.dispose();
   }
 
@@ -276,16 +276,7 @@ class _PianoValidationWidgetState extends State<PianoValidationWidget> {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  if (isPressed)
-                                    Text(
-                                      '${key['midiNote']}',
-                                      style: TextStyle(
-                                        fontSize: 6,
-                                        color: quizcolorAccent,
-                                      ),
-                                    ),
-                                ],
+                                children: [],
                               ),
                             ),
                           ),

@@ -3,13 +3,14 @@ import 'package:just_audio/just_audio.dart';
 /// Service to manage piano note sound playback
 /// 
 /// Uses just_audio package for cross-platform audio support (web, Android, iOS, etc.)
-/// Add piano sound files to assets/sounds/piano/ with names like: C3.wav, C#3.wav, etc.
+/// Add piano sound files to assets/sounds/piano/ with names like: C4.wav, C#4.wav, D4.wav, etc.
+/// Currently loads octave 4 (C4 to B4 = MIDI 60-71)
 class PianoSoundService {
   static final PianoSoundService _instance = PianoSoundService._internal();
   final Map<int, AudioPlayer> _audioPlayers = {}; // One player per note
   bool _isInitialized = false;
 
-  // Piano key layout: C3 to C5 (36 notes)
+  // Piano key layout: C4 to B4 (12 notes, one octave)
   static const List<String> noteNames = [
     'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'
   ];
@@ -20,16 +21,25 @@ class PianoSoundService {
     return _instance;
   }
 
+  /// Preload all piano sounds in the background (call this early in app lifecycle)
+  static void preloadAsync() {
+    _instance.initialize();
+  }
+
   /// Initialize the audio service and prepare audio sources
   Future<void> initialize() async {
     if (_isInitialized) return;
 
     try {
-      // Pre-load audio players for each note (C3 to C5 = 37 notes)
-      for (int midiNote = 36; midiNote <= 72; midiNote++) {
+      // Pre-load audio players for octave 4 - all 12 notes (C4 through B4)
+      // MIDI: 60=C4, 61=C#4, 62=D4, 63=D#4, 64=E4, 65=F4, 66=F#4, 67=G4, 68=G#4, 69=A4, 70=A#4, 71=B4
+      List<int> notesToLoad = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71];
+      
+      for (int midiNote in notesToLoad) {
         await _initializeNote(midiNote);
       }
       _isInitialized = true;
+      print('PianoSoundService initialized. Loaded ${_audioPlayers.length} notes.');
     } catch (e) {
       print('Error initializing PianoSoundService: $e');
     }
@@ -42,18 +52,13 @@ class PianoSoundService {
       String assetPath = 'assets/sounds/piano/$noteName.wav';
 
       AudioPlayer player = AudioPlayer();
-      // Try to set audio source - if file doesn't exist, it will fail gracefully
       try {
         await player.setAsset(assetPath);
         _audioPlayers[midiNote] = player;
+        print('Loaded: $assetPath');
       } catch (e) {
-        // Audio file not found - dispose the player and continue
+        print('Failed to load $assetPath: $e');
         await player.dispose();
-        if (e.toString().contains('not found') || e.toString().contains('404')) {
-          // File doesn't exist, that's okay
-        } else {
-          print('Error loading audio for ${_getMidiNoteName(midiNote)}: $e');
-        }
       }
     } catch (e) {
       print('Error initializing note $midiNote: $e');
@@ -69,7 +74,8 @@ class PianoSoundService {
 
   /// Play a piano note sound by MIDI note number
   /// 
-  /// Requires audio files in assets/sounds/piano/ with names like: C3.wav, C#3.wav, etc.
+  /// Requires audio files in assets/sounds/piano/ with names like: C4.wav, D4.wav, E4.wav, etc.
+  /// Supports octave 4 natural notes only (MIDI 60, 62, 64, 65, 67, 69, 71)
   Future<void> playNote(int midiNote) async {
     if (!_isInitialized) {
       await initialize();
@@ -78,12 +84,21 @@ class PianoSoundService {
     try {
       if (_audioPlayers.containsKey(midiNote)) {
         AudioPlayer player = _audioPlayers[midiNote]!;
-        // Reset to beginning and play
-        await player.seek(Duration.zero);
-        await player.play();
+        
+        try {
+          // Stop any current playback without waiting
+          if (player.playing) {
+            player.stop();
+          }
+          // Reset to beginning and play immediately
+          player.seek(Duration.zero);
+          await player.play();
+        } catch (e) {
+          // Silently handle playback errors
+        }
       }
     } catch (e) {
-      print('Error playing sound for MIDI note $midiNote: $e');
+      // Silently handle errors
     }
   }
 
@@ -99,7 +114,7 @@ class PianoSoundService {
         midiNotes.map((note) => playNote(note)),
       );
     } catch (e) {
-      print('Error playing multiple notes: $e');
+      // Silently handle errors
     }
   }
 
@@ -112,7 +127,7 @@ class PianoSoundService {
       _audioPlayers.clear();
       _isInitialized = false;
     } catch (e) {
-      print('Error disposing PianoSoundService: $e');
+      // Silently handle disposal errors
     }
   }
 }

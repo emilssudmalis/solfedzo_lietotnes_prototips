@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:quiz/Screens/quiz_sign_in.dart';
 import 'package:quiz/utils/quiz_colors.dart';
+import 'package:quiz/services/piano_sound_service.dart';
 /*
 MIT License
 
@@ -28,6 +29,8 @@ SOFTWARE.
  */
 void main() async {
   // await initialize();
+  // Preload piano sounds in the background
+  PianoSoundService.preloadAsync();
   runApp(const MyApp());
 }
 

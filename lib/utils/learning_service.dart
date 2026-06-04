@@ -24,6 +24,42 @@ class LearningService {
     await _loadSessionState();
   }
 
+  /// Convert MIDI note number to Latvian note name
+  static String midiToNoteName(int midiNumber) {
+    const Map<int, String> noteNames = {
+      60: 'Do',
+      61: 'Do#',
+      62: 'Re',
+      63: 'Re#',
+      64: 'Mi',
+      65: 'Fa',
+      66: 'Fa#',
+      67: 'Sol',
+      68: 'Sol#',
+      69: 'La',
+      70: 'La#',
+      71: 'Si',
+      72: 'Do',
+      73: 'Do#',
+      74: 'Re',
+      75: 'Re#',
+      76: 'Mi',
+      77: 'Fa',
+      78: 'Fa#',
+      79: 'Sol',
+      80: 'Sol#',
+      81: 'La',
+      82: 'La#',
+      83: 'Si',
+    };
+    return noteNames[midiNumber] ?? 'Nezināma nots ($midiNumber)';
+  }
+
+  /// Convert list of MIDI numbers to note names
+  static List<String> midiListToNoteNames(List<int> midiNumbers) {
+    return midiNumbers.map((midi) => midiToNoteName(midi)).toList();
+  }
+
   void _initializeData() {
     // Sample topics
     topics = [
@@ -277,46 +313,51 @@ class LearningService {
       Question(
         id: 'tercas_b2_l1_q1',
         topicId: 'intervals_tercas',
-        text: 'Kuras vietas tercā ir svarīgākās?',
-        options: [
-          'Pamatne un virsotne',
-          'Pamatne un vidus',
-          'Vidus un virsotne',
-          'Tikai pamatne'
-        ],
-        correctIndex: 0,
+        text: 'Kurš no šiem intervāliem ir vislielākais?',
+        options: ['Liela sekunda', 'Liela terca', 'Tīra kvarta', 'Tīra kvinta'],
+        correctIndex: 3,
         difficulty: 4,
-        explanation: 'Tercas pamatne un virsotne ir svarīgākās vietas.',
+        explanation: 'Tīra kvinta (7 pustoņi) ir vislielākais intervāls. Liela sekunda ir 2 pustoņi, liela terca ir 4 pustoņi, tīra kvarta ir 5 pustoņi.',
         category: 'bank2',
       ),
       Question(
         id: 'tercas_b2_l1_q2',
         topicId: 'intervals_tercas',
-        text: 'Tercas pamatne mūzikā ir:',
-        options: [
-          'Pirmā pakāpe',
-          'Otrā pakāpe',
-          'Trešā pakāpe',
-          'Ceturtā pakāpe'
-        ],
+        text: 'Mažora trijskaņa apakšā vienmēr ir:',
+        options: ['Liela terca', 'Maza terca', 'Tīra kvarta', 'Tīra oktāva'],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Tercas pamatne ir pirmā pakāpe.',
+        explanation: 'Mažora trijskaņa apakšā vienmēr atrodas liela terca (Do mažorā: Do-Mi-Sol).',
         category: 'bank2',
       ),
       Question(
         id: 'tercas_b2_l1_q3',
         topicId: 'intervals_tercas',
-        text: 'Tercas virsotne atrodas:',
-        options: [
-          'Trešajā pakāpē',
-          'Ceturtajā pakāpē',
-          'Otrajā pakāpē',
-          'Piektajā pakāpē'
-        ],
+        text: 'Minora trijskaņa apakšā vienmēr ir:',
+        options: ['Maza terca', 'Liela terca', 'Maza septīma', 'Liela sekunda'],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Tercas virsotne atrodas trešajā pakāpē.',
+        explanation: 'Minora trijskaņa apakšā vienmēr atrodas maza terca (la minorā: la-do-mi).',
+        category: 'bank2',
+      ),
+      Question(
+        id: 'tercas_b2_l1_q4',
+        topicId: 'intervals_tercas',
+        text: 'Kurš no šiem intervāliem ir vismazākais?',
+        options: ['Tīra kvinta', 'Palielināta kvarta', 'Maza terca', 'Liela sekunda'],
+        correctIndex: 3,
+        difficulty: 4,
+        explanation: 'Liela sekunda (2 pustoņi) ir mazākais intervāls no piedāvātajiem. Maza terca ir 3 pustoņi, tīra kvarta ir 5 pustoņi, tīra kvinta ir 7 pustoņi.',
+        category: 'bank2',
+      ),
+      Question(
+        id: 'tercas_b2_l1_q5',
+        topicId: 'intervals_tercas',
+        text: 'Liela terca atšķiras no tīras kvartas par:',
+        options: ['1 pustoni', '2 pustoņiem', 'oktāvu', '3 pustoņiem'],
+        correctIndex: 0,
+        difficulty: 4,
+        explanation: 'Liela terca atšķiras no tīras kvartas par 1 pustoni. Liela terca ir 4 pustoņi, tīra kvarta ir 5 pustoņi.',
         category: 'bank2',
       ),
     ]);
@@ -326,41 +367,41 @@ class LearningService {
       Question(
         id: 'tercas_b2_l2_q1',
         topicId: 'intervals_tercas',
-        text: 'Ja Do ir tercas pamatne, tad virsotne ir:',
-        options: ['Mi', 'Re', 'Fa', 'Sol'],
-        correctIndex: 0,
+        text: 'Kādi intervāli veido Do mažora trijskani?',
+        options: [
+          'Liela terca + tīra kvinta',
+          'Liela terca + tīra kvarta',
+          'Maza terca + liela terca',
+          'Liela terca + maza terca'
+        ],
+        correctIndex: 3,
         difficulty: 5,
-        explanation: 'Ja Do ir pamatne, tad Do-Mi ir terca, un virsotne ir Mi.',
+        explanation: 'Do mažora trijskaņa (Do-Mi-Sol) apakšā ir liela terca (Do-Mi), virs kuras ir maza terca (Mi-Sol).',
         category: 'bank2',
       ),
       Question(
         id: 'tercas_b2_l2_q2',
         topicId: 'intervals_tercas',
-        text: 'Harmoniski tercas skaņas ir:',
+        text: 'Kādi intervāli veido la minora trijskani?',
         options: [
-          'Patīkamas ausis',
-          'Nepatīkamas ausis',
-          'Neitrālas',
-          'Atkarīgs no konteksta'
+          'Maza terca + tīra kvinta',
+          'Liela terca + maza terca',
+          'Maza terca + liela terca',
+          'Maza terca + maza terca'
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         difficulty: 5,
-        explanation: 'Harmoniskas tercas skaņas ir patīkamas ausis.',
+        explanation: 'La minora trijskaņa (la-do-mi) apakšā ir maza terca (la-do), virs kuras ir liela terca (do-mi).',
         category: 'bank2',
       ),
       Question(
         id: 'tercas_b2_l2_q3',
         topicId: 'intervals_tercas',
-        text: 'Tercā Do-Mi ir:',
-        options: [
-          'Liela terca',
-          'Maza terca',
-          'Palielināta terca',
-          'Samazināta terca'
-        ],
+        text: 'Re mažora trijskaņa virsotne ir:',
+        options: ['La', 'Fa#', 'Mi', 'Re'],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Do-Mi ir liela terca (4 pustoņi).',
+        explanation: 'Re mažora trijskaņa (Re-Fa#-La) virsotne ir La.',
         category: 'bank2',
       ),
     ]);
@@ -563,46 +604,31 @@ class LearningService {
       Question(
         id: 'kvartas_b2_l1_q1',
         topicId: 'intervals_kvartas',
-        text: 'Kuras vietas kvartā ir svarīgākās?',
-        options: [
-          'Pamatne un virsotne',
-          'Pamatne un vidus',
-          'Vidus un virsotne',
-          'Tikai pamatne'
-        ],
+        text: 'Kvartas un tercas atšķirība pustoņos ir:',
+        options: ['1 pustonis', '2 pustoņi', '3 pustoņi', '4 pustoņi'],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Kvartas pamatne un virsotne ir svarīgākās vietas.',
+        explanation: 'Liela terca ir 4 pustoņi, tīra kvarta ir 5 pustoņi. Atšķirība ir 1 pustonis.',
         category: 'bank2',
       ),
       Question(
         id: 'kvartas_b2_l1_q2',
         topicId: 'intervals_kvartas',
-        text: 'Kvartas pamatne ir:',
-        options: [
-          'Pirmā pakāpe',
-          'Otrā pakāpe',
-          'Ceturtā pakāpe',
-          'Trešā pakāpe'
-        ],
-        correctIndex: 0,
+        text: 'Kurš no šiem intervāliem ir jūtami lielāks par kvartu?',
+        options: ['Terca', 'Sekunda', 'Kvinta', 'Seksta'],
+        correctIndex: 2,
         difficulty: 4,
-        explanation: 'Kvartas pamatne ir pirmā pakāpe.',
+        explanation: 'Kvinta (7 pustoņi) ir lielāka par kvartu (5 pustoņi). Terca un sekunda ir mazākas, seksta ir daudz lielāka.',
         category: 'bank2',
       ),
       Question(
         id: 'kvartas_b2_l1_q3',
         topicId: 'intervals_kvartas',
-        text: 'Kvartas virsotne atrodas:',
-        options: [
-          'Ceturtajā pakāpē',
-          'Trešajā pakāpē',
-          'Piektajā pakāpē',
-          'Otrajā pakāpē'
-        ],
+        text: 'Fa tīrā kvarta augšā nots ir:',
+        options: ['Si', 'Sol', 'La', 'Do'],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Kvartas virsotne atrodas ceturtajā pakāpē.',
+        explanation: 'Tīra kvarta virs Fa (65) ir Si (71) - attālums 5 pustoņi.',
         category: 'bank2',
       ),
     ]);
@@ -612,42 +638,36 @@ class LearningService {
       Question(
         id: 'kvartas_b2_l2_q1',
         topicId: 'intervals_kvartas',
-        text: 'Ja Do ir kvartas pamatne, tad virsotne ir:',
-        options: ['Fa', 'Re', 'Sol', 'Mi'],
+        text: 'Akordā vienmēr ir:',
+        options: [
+          'Vismaz tīra kvinta virs saknes',
+          'Vismaz tīra kvarta',
+          'Vismaz liela terca',
+          'Vismaz sekunda'
+        ],
         correctIndex: 0,
         difficulty: 5,
-        explanation:
-            'Ja Do ir pamatne, tad Do-Fa ir kvarta, un virsotne ir Fa.',
+        explanation: 'Klasiskajā tritonāli akordā (mažora vai mazora) vienmēr ir tīra kvinta virs saknes. Tas ir kopā ar tercu (liela vai maza).',
         category: 'bank2',
       ),
       Question(
         id: 'kvartas_b2_l2_q2',
         topicId: 'intervals_kvartas',
-        text: 'Tīrā kvarta skaņ:',
-        options: [
-          'Neitrāla, nedaudz tukša',
-          'Ļoti skaista',
-          'Negodīga',
-          'Griezīga'
-        ],
-        correctIndex: 0,
+        text: 'Kvarta atšķiras no kvintas ar:',
+        options: ['1 pustoņa', '2 pustoņiem', '3 pustoņiem', '4 pustoņiem'],
+        correctIndex: 1,
         difficulty: 5,
-        explanation: 'Tīra kvarta skaņ neitrāla un nedaudz tukša.',
+        explanation: 'Tīra kvarta ir 5 pustoņi, tīra kvinta ir 7 pustoņi. Atšķirība ir 2 pustoņi.',
         category: 'bank2',
       ),
       Question(
         id: 'kvartas_b2_l2_q3',
         topicId: 'intervals_kvartas',
-        text: 'Intervālā Do-Fa ir:',
-        options: [
-          'Tīra kvarta',
-          'Liela tercā',
-          'Palielināta kvarta',
-          'Tīra kvinta'
-        ],
+        text: 'Mažora trijskaņa apakšējo intervālu (starp sakni un kundzi) veido:',
+        options: ['Liela terca', 'Tīra kvarta', 'Maza terca', 'Tīra kvinta'],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Do-Fa ir tīra kvarta (5 pustoņi).',
+        explanation: 'Mažora trijskaņu (Do-Mi-Sol) apakšējo intervālu starp Do un Mi veido liela terca.',
         category: 'bank2',
       ),
     ]);
@@ -845,46 +865,36 @@ class LearningService {
       Question(
         id: 'kvintas_b2_l1_q1',
         topicId: 'intervals_kvintas',
-        text: 'Kuras vietas kvintā ir svarīgākās?',
-        options: [
-          'Pamatne un virsotne',
-          'Pamatne un vidus',
-          'Vidus un virsotne',
-          'Tikai pamatne'
-        ],
-        correctIndex: 0,
+        text: 'Kurš no šiem intervāliem ir stabilākais un skaidrākais?',
+        options: ['Sekunda', 'Terca', 'Kvinta', 'Seksta'],
+        correctIndex: 2,
         difficulty: 4,
-        explanation: 'Kvintas pamatne un virsotne ir svarīgākās vietas.',
+        explanation: 'Tīra kvinta ir viens no stabilākajiem un skaidrākajiem intervāliem mūzikā. To izmanto harmonijā un akordos.',
         category: 'bank2',
       ),
       Question(
         id: 'kvintas_b2_l1_q2',
         topicId: 'intervals_kvintas',
-        text: 'Kvintas pamatne ir:',
+        text: 'Mažora trijskaņa virsotne atrodas intervālā:',
         options: [
-          'Pirmā pakāpe',
-          'Otrā pakāpe',
-          'Piektā pakāpe',
-          'Ceturtā pakāpe'
+          'Tīra kvinta virs saknes',
+          'Tīra kvarta virs saknes',
+          'Liela terca virs saknes',
+          'Tīra septima virs saknes'
         ],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Kvintas pamatne ir pirmā pakāpe.',
+        explanation: 'Mažora trijskaņas virsotne (Do mažor: Sol) atrodas tīras kvintas attālumā (7 pustoņi) virs saknes (Do).',
         category: 'bank2',
       ),
       Question(
         id: 'kvintas_b2_l1_q3',
         topicId: 'intervals_kvintas',
-        text: 'Kvintas virsotne atrodas:',
-        options: [
-          'Piektajā pakāpē',
-          'Ceturtajā pakāpē',
-          'Trešajā pakāpē',
-          'Sestajā pakāpē'
-        ],
-        correctIndex: 0,
+        text: 'Kvinta ir lielāka par:',
+        options: ['Oktāvu', 'Sekstu', 'Tercu', 'Devīto'],
+        correctIndex: 2,
         difficulty: 4,
-        explanation: 'Kvintas virsotne atrodas piektajā pakāpē.',
+        explanation: 'Kvinta (7 pustoņi) ir lielāka par tercu (4 pustoņi), bet mazāka par sekstu (8-9 pustoņi) un devīto (13 pustoņi).',
         category: 'bank2',
       ),
     ]);
@@ -894,37 +904,46 @@ class LearningService {
       Question(
         id: 'kvintas_b2_l2_q1',
         topicId: 'intervals_kvintas',
-        text: 'Ja Do ir kvintas pamatne, tad virsotne ir:',
-        options: ['Sol', 'Fa', 'La', 'Mi'],
+        text: 'Kādi divi intervāli kopā veido trijskaņu (3. likums)?',
+        options: [
+          'Terca un kvarta (no terces virsotnes)',
+          'Sekunda un seksta',
+          'Kvarta un terca',
+          'Septima un prima'
+        ],
         correctIndex: 0,
         difficulty: 5,
-        explanation:
-            'Ja Do ir pamatne, tad Do-Sol ir kvinta, un virsotne ir Sol.',
+        explanation: 'Trijskaņu (Do-Mi-Sol) apakšā ir liela/maza terca, un virs terces virsotnes ir tīra kvarta līdz trijskaņas virsotei.',
         category: 'bank2',
       ),
       Question(
         id: 'kvintas_b2_l2_q2',
         topicId: 'intervals_kvintas',
-        text: 'Tīrā kvinta skaņ:',
-        options: ['Spēcīga, konsonate', 'Griezīga', 'Negodīga', 'Ļoti skumta'],
+        text: 'Tīra kvinta var būt savādi, ja to veido:',
+        options: [
+          'Fa un Si (tritons)',
+          'Do un Sol',
+          'Re un La',
+          'Mi un Si'
+        ],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Tīra kvinta skaņ spēcīga un konsonate.',
+        explanation: 'Fa-Si nav tīra kvinta, bet paaugstināta kvinta jeb tritons (6 pustoņi). Tas ir reti izmantots intervāls.',
         category: 'bank2',
       ),
       Question(
         id: 'kvintas_b2_l2_q3',
         topicId: 'intervals_kvintas',
-        text: 'Intervālā Do-Sol ir:',
+        text: 'Akorda virsotne (ne sakne) atrodas intervālā:',
         options: [
-          'Tīra kvinta',
-          'Samazināta kvinta',
-          'Tīra kvarta',
-          'Liela tercā'
+          'Tīra kvinta virs saknes',
+          'Liela terca virs saknes',
+          'Tīra kvarta virs saknes',
+          'Maza terca virs saknes'
         ],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Do-Sol ir tīra kvinta (7 pustoņi).',
+        explanation: 'Trijskaņas virsotne atrodas tīras kvintas attālumā (7 pustoņi) virs akorda saknes (Do-Sol, Re-La u.t.t.).',
         category: 'bank2',
       ),
     ]);
@@ -1117,46 +1136,36 @@ class LearningService {
       Question(
         id: 'sekstas_b2_l1_q1',
         topicId: 'intervals_sekstas',
-        text: 'Kuras vietas sekstā ir svarīgākās?',
-        options: [
-          'Pamatne un virsotne',
-          'Pamatne un vidus',
-          'Vidus un virsotne',
-          'Tikai pamatne'
-        ],
-        correctIndex: 0,
+        text: 'Kurš no šiem intervāliem ir vislielākais?',
+        options: ['Seksta', 'Kvinta', 'Terca', 'Septima'],
+        correctIndex: 3,
         difficulty: 4,
-        explanation: 'Sekstas pamatne un virsotne ir svarīgākās vietas.',
+        explanation: 'Tīra septima (11 pustoņi) ir vislielākais intervāls no piedāvātajiem. Seksta ir 8-9 pustoņi, Kvinta ir 7 pustoņi, Terca ir 3-4 pustoņi.',
         category: 'bank2',
       ),
       Question(
         id: 'sekstas_b2_l1_q2',
         topicId: 'intervals_sekstas',
-        text: 'Sekstas pamatne ir:',
-        options: [
-          'Pirmā pakāpe',
-          'Otrā pakāpe',
-          'Sestā pakāpe',
-          'Ceturtā pakāpe'
-        ],
-        correctIndex: 0,
+        text: 'Seksta atšķiras no kvintas ar:',
+        options: ['1 pustoņa', '2 pustoņiem', '3 pustoņiem', '4 pustoņiem'],
+        correctIndex: 1,
         difficulty: 4,
-        explanation: 'Sekstas pamatne ir pirmā pakāpe.',
+        explanation: 'Tīra kvinta ir 7 pustoņi, liela seksta ir 9 pustoņi, maza seksta ir 8 pustoņi. Atšķirība ir 1-2 pustoņi.',
         category: 'bank2',
       ),
       Question(
         id: 'sekstas_b2_l1_q3',
         topicId: 'intervals_sekstas',
-        text: 'Sekstas virsotne atrodas:',
+        text: 'Liela seksta ir skarīga intervāla:',
         options: [
-          'Sestajā pakāpē',
-          'Ceturtajā pakāpē',
-          'Piektajā pakāpē',
-          'Septīto pakāpē'
+          'Mazā terca',
+          'Lielajā tercā',
+          'Tīrajā kvintā',
+          'Tīrajā septimā'
         ],
         correctIndex: 0,
         difficulty: 4,
-        explanation: 'Sekstas virsotne atrodas sestajā pakāpē.',
+        explanation: 'Liela seksta (Do-La, 9 pustoņi) invertēta kļūst par mazo tercu (La-Do, 3 pustoņi). Intervāli ir savstarpēji inverti.',
         category: 'bank2',
       ),
     ]);
@@ -1166,32 +1175,41 @@ class LearningService {
       Question(
         id: 'sekstas_b2_l2_q1',
         topicId: 'intervals_sekstas',
-        text: 'Ja Do ir sekstas pamatne, tad virsotne ir:',
-        options: ['La', 'Sol', 'Si', 'Mi'],
+        text: 'Kādi intervāli kopā veido septīto akordu (7. akords)?',
+        options: [
+          'Trijskaņa (terca+kvinta) plus septima',
+          'Trijskaņa (terca+kvarta) plus septima',
+          'Tikai septima',
+          'Divas terces un kvarta'
+        ],
         correctIndex: 0,
         difficulty: 5,
-        explanation:
-            'Ja Do ir pamatne, tad Do-La ir seksta, un virsotne ir La.',
+        explanation: 'Septīto akordu (Do7: Do-Mi-Sol-Si) veido trijskaņa (Do-Mi-Sol) plus septima (Si), kas ir liela septima virs saknes.',
         category: 'bank2',
       ),
       Question(
         id: 'sekstas_b2_l2_q2',
         topicId: 'intervals_sekstas',
-        text: 'Liela seksta skaņ:',
-        options: ['Skaista, romantiška', 'Griezīga', 'Negodīga', 'Ļoti skumta'],
+        text: 'Seksta ir piemērota harmonijai, jo skaņ:',
+        options: [
+          'Mīksta un svāriga, piemērota sakrālai mūzikai',
+          'Griezīga un ass',
+          'Negodīga un neskaidra',
+          'Tukša un vienveidīga'
+        ],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Liela seksta skaņ skaista un romantiška.',
+        explanation: 'Liela seksta (īpaši) skaņ mīksta, svāriga un romantiška, padarot to piemērotu harmonijai.',
         category: 'bank2',
       ),
       Question(
         id: 'sekstas_b2_l2_q3',
         topicId: 'intervals_sekstas',
-        text: 'Intervālā Do-La ir:',
-        options: ['Liela seksta', 'Maza seksta', 'Tīra kvinta', 'Tīra septima'],
+        text: 'La mažora trijskaņu spēle uz klaviatūras sākas ar:',
+        options: ['La', 'Do', 'Cis', 'Fis'],
         correctIndex: 0,
         difficulty: 5,
-        explanation: 'Do-La ir liela seksta (9 pustoņi).',
+        explanation: 'La mažora trijskaņa (La-Cis-Mi) sākas ar La. Trijskaņu veido La (69) + Cis (73) + Mi (76).',
         category: 'bank2',
       ),
     ]);
@@ -1295,21 +1313,91 @@ class LearningService {
       ),
     ]);
 
-    // Bank 2 Validation Tasks (Difficulty 5)
+    // Bank 2 Validation Tasks - Chord Theory (Difficulty 5)
     questions.addAll([
       Question(
         id: 'tercas_b2_val_q1',
         topicId: 'intervals_tercas',
-        text: 'Izdomā un uz klaviatūras atrodi lielu tercu, kuras augšējā nots ir Mi!',
+        text: 'Izdomā un uz klaviatūras atrodi Do mažora trijskaņa divas augšējās notis!',
         options: [],
         correctIndex: -1,
         difficulty: 5,
         explanation:
-            'Liela terca Do-Mi ir intervāls, kurā ietilpst 4 pustoņi. Tas skan gaiši un priecīgi.',
+            'Do mažora trijskaņa (Do-Mi-Sol) divas augšējās notis ir Mi un Sol. Akords ir veidots no lielas tercas (Do-Mi) un mazas tercas (Mi-Sol).',
         category: 'bank2',
         isValidation: true,
         validationType: 'interval',
-        expectedNotes: [60, 64], // C and E
+        expectedNotes: [64, 67], // E and G (two upper notes of C major)
+      ),
+      Question(
+        id: 'kvartas_b2_val_q1',
+        topicId: 'intervals_tercas',
+        text: 'Izdomā un uz klaviatūras atrodi Re mažora trijskaņa divas augšējās notis!',
+        options: [],
+        correctIndex: -1,
+        difficulty: 5,
+        explanation:
+            'Re mažora trijskaņa (Re-Fa#-La) divas augšējās notis ir Fa# un La. Akords ir veidots no lielas tercas (Re-Fa#) un mazas tercas (Fa#-La).',
+        category: 'bank2',
+        isValidation: true,
+        validationType: 'interval',
+        expectedNotes: [66, 69], // F# and A (two upper notes of D major)
+      ),
+      Question(
+        id: 'kvintas_b2_val_q1',
+        topicId: 'intervals_kvintas',
+        text: 'Izdomā un uz klaviatūras atrodi Do mazora trijskaņa visas notis!',
+        options: [],
+        correctIndex: -1,
+        difficulty: 5,
+        explanation:
+            'Do mazora trijskaņa (Do-Mib-Sol) notis ir Do (60), Mib (63) un Sol (67). Akords ir veidots no Do, mazas tercas (Do-Mib) un tīras kvintas (Do-Sol).',
+        category: 'bank2',
+        isValidation: true,
+        validationType: 'interval',
+        expectedNotes: [60, 63, 67], // C, Eb, G (all notes of C minor)
+      ),
+      Question(
+        id: 'sekstas_b2_val_q1',
+        topicId: 'intervals_sekstas',
+        text: 'Izdomā un uz klaviatūras atrodi Mi mažora trijskaņu!',
+        options: [],
+        correctIndex: -1,
+        difficulty: 5,
+        explanation:
+            'Mi mažora trijskaņa (Mi-Gis-Si) notis ir Mi (64), Gis (68) un Si (71). Akords satur lielu tercu (Mi-Gis) un tīru kvintu (Mi-Si).',
+        category: 'bank2',
+        isValidation: true,
+        validationType: 'interval',
+        expectedNotes: [64, 68, 71], // E, G#, B (all notes of E major)
+      ),
+      Question(
+        id: 'tercas_b2_val_q2',
+        topicId: 'intervals_kvintas',
+        text: 'Izdomā un uz klaviatūras atrodi Re mazora trijskaņa visas notis!',
+        options: [],
+        correctIndex: -1,
+        difficulty: 5,
+        explanation:
+            'Re mazora trijskaņa (Re-Fa-La) notis ir Re (62), Fa (65) un La (69). Akords ir veidots no Re, mazas tercas (Re-Fa) un tīras kvintas (Re-La).',
+        category: 'bank2',
+        isValidation: true,
+        validationType: 'interval',
+        expectedNotes: [62, 65, 69], // D, F, A (all notes of D minor)
+      ),
+      Question(
+        id: 'kvartas_b2_val_q2',
+        topicId: 'intervals_kvartas',
+        text: 'Izdomā un uz klaviatūras atrodi Fa mažora trijskaņu!',
+        options: [],
+        correctIndex: -1,
+        difficulty: 5,
+        explanation:
+            'Fa mažora trijskaņa (Fa-La-Do) notis ir Fa (65), La (69) un Do (72). Akords satur lielu tercu (Fa-La) un tīru kvintu (Fa-Do).',
+        category: 'bank2',
+        isValidation: true,
+        validationType: 'interval',
+        expectedNotes: [65, 69, 72], // F, A, C (all notes of F major)
       ),
     ]);
   }

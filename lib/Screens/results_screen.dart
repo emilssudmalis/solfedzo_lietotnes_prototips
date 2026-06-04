@@ -116,7 +116,7 @@ class ResultsScreen extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 if (result.pressedNotes != null)
                                   Text(
-                                    'Tavas izvēlētās notis: ${result.pressedNotes?.join(", ")}',
+                                    'Tavas izvēlētās notis: ${LearningService.midiListToNoteNames(result.pressedNotes!).join(", ")}',
                                   ),
                               ],
                             )
